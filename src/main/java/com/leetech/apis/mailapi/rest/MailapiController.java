@@ -1,6 +1,7 @@
 package com.leetech.apis.mailapi.rest;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.ws.rs.Consumes;
 
@@ -45,12 +46,14 @@ public class MailapiController {
 	public boolean newAccount(@RequestBody String newAccountData) {
 		try {
 			SendConfirmationEvent sendConfirmationEvent = gson.fromJson(newAccountData, SendConfirmationEvent.class);
+			sendConfirmationEvent.setEventSourceKey(UUID.randomUUID());
 			eventBus.notify("sendConfirmationEvent", Event.wrap(sendConfirmationEvent));
 			return new Waiter().waitUntil(() -> {
 				return progressTracker.contains(sendConfirmationEvent.getEventSourceKey(),
 						ConfirmationSentEvent.class.getSimpleName());
 			}, LocalDateTime.now().plusSeconds(10));
 		} catch (Exception e) {
+			System.out.println("Something wrong happened..." + e.getMessage());
 			return false;
 		}
 
