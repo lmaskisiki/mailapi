@@ -36,8 +36,8 @@ public class SendConfirmationConsumer implements Consumer<Event<SendConfirmation
 		// fire welcome event and instruction on how to use the app
 
 		if (event != null) {
-			String newMessage = messageBody.replace("<client>", event.getData().getFirstName());
-			if (mailSender.send(event.getData().getAccountEmail(), mailSource, "Account Activation", newMessage)) {
+			String newMessage = messageBody.replace("<client>", event.getData().getNames());
+			if (mailSender.send(event.getData().getEmailAddress(), mailSource, "Account Activation", newMessage)) {
 				eventTracker.addEventList(event.getData().getEventSourceKey(),
 						event.getData().getClass().getSimpleName());
 				ConfirmationSentEvent confirmationSentEvent = new ConfirmationSentEvent();

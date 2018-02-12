@@ -1,35 +1,37 @@
 package com.leetech.apis.models;
 
+import com.google.gson.JsonObject;
+
 public class SendConfirmationEvent extends EventModel {
- 
+
 	private int accountKey;
-	private String accountEmail;
-	private String firstName;
+	private String emailAddress;
+	private String names;
 	public int getAccountKey() {
 		return accountKey;
 	}
 	public void setAccountKey(int accountKey) {
 		this.accountKey = accountKey;
 	}
-	public String getAccountEmail() {
-		return accountEmail;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
-	public void setAccountEmail(String accountEmail) {
-		this.accountEmail = accountEmail;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getNames() {
+		return names;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setNames(String names) {
+		this.names = names;
 	}
-	public SendConfirmationEvent(int accountKey, String accountEmail, String firstName) {
+	public SendConfirmationEvent(int accountKey, String emailAddress, String names) {
 		super();
 		this.accountKey = accountKey;
-		this.accountEmail = accountEmail;
-		this.firstName = firstName;
+		this.emailAddress = emailAddress;
+		this.names = names;
 	}
-
- 
+	
+	
 
 }
