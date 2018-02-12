@@ -16,7 +16,6 @@ public class ConfirmationSentConsumer implements Consumer<Event<ConfirmationSent
 
 	@Override
 	public void accept(Event<ConfirmationSentEvent> event) {
-		System.out.println("\n \r Email sent \n \r" + event.getData().getEventSourceKey());
 		eventTracker.addEventList(event.getData().getEventSourceKey(), event.getData().getClass().getSimpleName());
 	}
 

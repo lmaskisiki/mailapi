@@ -2,39 +2,34 @@ package com.leetech.apis.models;
 
 public class SendConfirmationEvent extends EventModel {
  
-	private int accouuntKey;
+	private int accountKey;
 	private String accountEmail;
 	private String firstName;
-
-	public int getAccouuntKey() {
-		return accouuntKey;
+	public int getAccountKey() {
+		return accountKey;
 	}
-
-	public void setAccouuntKey(int accouuntKey) {
-		this.accouuntKey = accouuntKey;
+	public void setAccountKey(int accountKey) {
+		this.accountKey = accountKey;
 	}
-
 	public String getAccountEmail() {
 		return accountEmail;
 	}
-
 	public void setAccountEmail(String accountEmail) {
 		this.accountEmail = accountEmail;
 	}
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
-	public SendConfirmationEvent(int accouuntKey, String accountEmail, String firstName) {
+	public SendConfirmationEvent(int accountKey, String accountEmail, String firstName) {
 		super();
-		this.accouuntKey = accouuntKey;
+		this.accountKey = accountKey;
 		this.accountEmail = accountEmail;
 		this.firstName = firstName;
 	}
+
+ 
 
 }

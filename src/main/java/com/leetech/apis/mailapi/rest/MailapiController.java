@@ -1,9 +1,6 @@
 package com.leetech.apis.mailapi.rest;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 import javax.ws.rs.Consumes;
 
@@ -18,7 +15,6 @@ import com.google.gson.JsonParser;
 import com.leetech.apis.mailapi.EventProgressTracker;
 import com.leetech.apis.mailapi.helpers.Waiter;
 import com.leetech.apis.models.ConfirmationSentEvent;
-import com.leetech.apis.models.MailItem;
 import com.leetech.apis.models.SendConfirmationEvent;
 
 import reactor.bus.Event;
@@ -40,9 +36,8 @@ public class MailapiController {
 
 	@PostMapping("/sendmail")
 	public void sendMail(@RequestBody String mailData) {
-		MailItem mail = new MailItem("", "", "");
-		eventBus.notify("mailConsumer", Event.wrap(mail));
-
+		// eventBus.notify("mailConsumer", Event.wrap(mail));
+		// TODO: investigate how we want to send direct mail
 	}
 
 	@PostMapping("/newaccount")
@@ -56,7 +51,6 @@ public class MailapiController {
 						ConfirmationSentEvent.class.getSimpleName());
 			}, LocalDateTime.now().plusSeconds(10));
 		} catch (Exception e) {
-			// TODO: handle exception
 			return false;
 		}
 
