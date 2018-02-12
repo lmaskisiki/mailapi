@@ -1,0 +1,30 @@
+#management.security.enabled=false
+spring: 
+  mail: 
+    host: smtp.gmail.com
+    port: 587
+    username: sikzatech@gmail.com
+    password: 200903375
+    smtp: 
+      auth: true
+      starttls: 
+        enable: true
+        
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/dbtest" #${JDBC_DATABASE_URL}
+    driverClassName: org.postgresql.Driver
+    username: dbuser #${JDBC_DATABASE_USERNAME}
+    password: lizo90 #${JDBC_DATABASE_PASSWORD}
+  jpa:  
+    hibernate: 
+      ddl-auto: update   
+          
+mail:
+  domain: gmail.com
+  sources: 
+    admin: admin@${mail.domain} 
+    it: it@${mail.domain}
+    accounts: sikzatech@${mail.domain}
+  messages:
+    confirmation: "you need to confirm your account, use the link below to do so"
+    welcome:  "Dear <client>, thank you for joining us."

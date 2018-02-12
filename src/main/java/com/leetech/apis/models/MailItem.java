@@ -1,6 +1,8 @@
 package com.leetech.apis.models;
 
-public class MailItem {
+import com.leetech.apis.mailapi.services.MailEvent;
+
+public class MailItem extends MailEvent {
 	private String subject;
 	private String messageBody;
 	private String mailTo;
