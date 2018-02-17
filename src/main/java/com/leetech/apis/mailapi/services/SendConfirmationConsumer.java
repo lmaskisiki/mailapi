@@ -1,5 +1,8 @@
 package com.leetech.apis.mailapi.services;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,7 +20,7 @@ public class SendConfirmationConsumer implements Consumer<Event<SendConfirmation
 	@Autowired
 	private MailSender mailSender;
 
-	@Value("${mail.messages.welcome}")
+	@Value("${mail.messages.confirmation}")
 	private String messageBody;
 
 	@Value("${mail.sources.accounts}")
@@ -37,6 +40,9 @@ public class SendConfirmationConsumer implements Consumer<Event<SendConfirmation
 
 		if (event != null) {
 			String newMessage = messageBody.replace("<client>", event.getData().getNames());
+			newMessage = newMessage.replace("<accountKey>", event.getData().getAccountKey() + "");
+			newMessage = newMessage.replace("<timeStamp>", Instant.now().toEpochMilli() + "");
+
 			if (mailSender.send(event.getData().getEmailAddress(), mailSource, "Account Activation", newMessage)) {
 				eventTracker.addEventList(event.getData().getEventSourceKey(),
 						event.getData().getClass().getSimpleName());

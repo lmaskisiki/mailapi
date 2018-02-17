@@ -44,6 +44,5 @@ public class MailapiApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MailapiApplication.class, args);
-		Waiter e = new Waiter();
 	}
 }
