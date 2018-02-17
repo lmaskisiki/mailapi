@@ -26,5 +26,9 @@ mail:
     it: it@${mail.domain}
     accounts: sikzatech@${mail.domain}
   messages:
-    confirmation: "you need to confirm your account, use the link below to do so"
     welcome:  "Dear <client>, thank you for joining us."
+    confirmation:  "Dear <client>, \n \n \r Thank you for joining us. \n \n 
+    Please click the link below to confirm your subscription, 
+    Please note that only confirmed accounts with be proccesed for content assingment. \n \n
+    http://localhost:8080/gymservices/confirm?accountkey=<accountKey>&t=<timeStamp> \n \n
+    \n Thank you."
